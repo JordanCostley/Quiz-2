@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Jordan Costley | Quiz 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+</head>
+<body>
+    <div id="shell">
+        <div id="mainSection">
+            <div id="inputSection">
+                <div id="inputBox">
+                    <input id="itemName" type="text" name="" placeholder="Item Name">
+                    <input id="itemPrice" type="number" name="" placeholder="0.00">
+                    <button type="button" name="itemAdd" onclick="itemAdd()">Add Item</button>
+                    <button type="button" name="itemTotals" onclick="totalItems()">Total Up Items</button>
+                </div>
+            </div>
+            <div id="resultSection">
+                <p id="resultItems"></p>
+                <p id="resultPrices"></p>
+                <p id="totalPrice"></p>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    // Arrays for input storage
+    var items = [];
+    var prices = [];
+
+    // Function to pull items from input and put into arrays
+    function itemAdd(){
+        var itemN = document.getElementById('itemName').value;
+        var itemP = parseFloat(document.getElementById('itemPrice').value);
+
+        var itemFull = {itemName:itemN,itemPrice:itemP};
+
+        if (itemN === '' || itemP === '') {
+            alert("Please fill all fields")
+        }
+        else {        
+        items.push(itemFull);
+        prices.push(itemP);
+        displayItem(items);
+        console.log(prices)
+        }
+    }
+
+     function displayItem(itemsArray){
+        document.getElementById('resultItems').innerHTML = "<br>";
+        document.getElementById('resultPrices').innerHTML = "<br>";
+        for(i=0;i<itemsArray.length;i++){
+            document.getElementById('resultItems').innerHTML += itemsArray[i].itemName;
+            document.getElementById('resultPrices').innerHTML +=  itemsArray[i].itemPrice;
+            console.log(items)
+        }
+        document.getElementById('itemName').value = " ";
+        document.getElementById('itemPrice').value = " ";
+    }
+
+    // Totals prices by pulling from array and then adding them up plus adding tax.
+function getSum(total, num) {
+  return total + num;
+}
+function totalItems(item) {
+  document.getElementById("totalPrice").innerHTML = (prices.reduce(getSum) * .06 + prices.reduce(getSum)).toFixed(2);
+}
+   
+</script>
+</html>
