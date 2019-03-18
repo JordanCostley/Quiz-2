@@ -9,19 +9,29 @@
 </head>
 <body>
     <div id="shell">
+        <h2>List Builder And Tax Calculator</h2>
         <div id="mainSection">
             <div id="inputSection">
                 <div id="inputBox">
                     <input id="itemName" type="text" name="" placeholder="Item Name">
                     <input id="itemPrice" type="number" name="" placeholder="0.00">
                     <button type="button" name="itemAdd" onclick="itemAdd()">Add Item</button>
+                    <h1>Item:</h1>
+                    <h1>Price:</h1>
+                <div id="itemsBox">
+                    <p id="resultItems"></p>
+                </div>
+                <div id="priceBox">                    
+                    <p id="resultPrices"></p>
+                </div>
+                <div id="totalButton">
                     <button type="button" name="itemTotals" onclick="totalItems()">Total Up Items</button>
+                </div>
                 </div>
             </div>
             <div id="resultSection">
-                <p id="resultItems"></p>
-                <p id="resultPrices"></p>
-                <p id="totalPrice"></p>
+                <h1 id="totalTitle">Total Price:</h1>                
+                <h3 id="totalPrice"></h3>
             </div>
         </div>
     </div>
@@ -50,11 +60,11 @@
     }
 
      function displayItem(itemsArray){
-        document.getElementById('resultItems').innerHTML = "<br>";
-        document.getElementById('resultPrices').innerHTML = "<br>";
+        document.getElementById('resultItems').innerHTML = " ";
+        document.getElementById('resultPrices').innerHTML = " ";
         for(i=0;i<itemsArray.length;i++){
-            document.getElementById('resultItems').innerHTML += itemsArray[i].itemName;
-            document.getElementById('resultPrices').innerHTML +=  itemsArray[i].itemPrice;
+            document.getElementById('resultItems').innerHTML += itemsArray[i].itemName + "<br>";
+            document.getElementById('resultPrices').innerHTML += "$" +  itemsArray[i].itemPrice + "<br>";
             console.log(items)
         }
         document.getElementById('itemName').value = " ";
@@ -66,7 +76,7 @@ function getSum(total, num) {
   return total + num;
 }
 function totalItems(item) {
-  document.getElementById("totalPrice").innerHTML = (prices.reduce(getSum) * .06 + prices.reduce(getSum)).toFixed(2);
+  document.getElementById("totalPrice").innerHTML = "$" + (prices.reduce(getSum) * .06 + prices.reduce(getSum)).toFixed(2);
 }
    
 </script>
