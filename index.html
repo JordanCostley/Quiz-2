@@ -76,23 +76,23 @@
 
     // Totals prices by pulling from array and then adding them up plus adding tax using loop.
 
-function calculateAllPricesWithTax(priceArray,tax)
+function calculateTotalPrice(pricesArray,tax)
     {
-        var priceTally = 0;
-        for(i=0;i<priceArray.length;i++)
+        var priceCount = 0;
+        for(i=0;i<pricesArray.length;i++)
         {
-          if(priceArray[i]>=3)
+          if(pricesArray[i]>=3)
           {
-              priceTally += priceArray[i];
+            priceCount += pricesArray[i];
           }
         }
-        priceTally *= (1+tax);
-        document.getElementById("totalPrice").innerHTML = "$" + priceTally.toFixed(2);
-        return priceTally;
+        priceCount *= (1+tax);
+        document.getElementById("totalPrice").innerHTML = "$" + priceCount.toFixed(2);
+        return priceCount;
          
     }
     function totalItems(){
-    calculateAllPricesWithTax(prices,tax);    
+        calculateTotalPrice(prices,tax);    
     }
     
         // Totals prices by pulling from array and then adding them up plus adding tax using reduce.
